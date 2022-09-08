@@ -6,6 +6,8 @@ import {
   hideOutputCountry,
 } from './setStateOutput';
 
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 export const sendRequestForGetCountries = async value => {
   const response = await fetch(
     `${API_URL}/name/${value}?fields=name,languages,capital,population,flag`
@@ -19,7 +21,7 @@ export const sendRequestForGetCountries = async value => {
 };
 
 export const printError = text => {
-  console.warn(text);
+  Notify.failure(text, 500);
 };
 
 export const clearList = () => {
